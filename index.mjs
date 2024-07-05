@@ -46,7 +46,7 @@ app.get("/api/customers", (request, response) => {
       value.toLowerCase()
     );
     let result = mockCustomers.filter(
-      (customer) => customer[key] === value.toLowerCase() || value.toUpperCase()
+      (customer) => customer[key] === value.toLowerCase() || customer[key] === value.toUpperCase()
     );
     return response.send(result);
   } else response.status(200).send(mockCustomers);
@@ -101,3 +101,6 @@ app.get("/api/customers/:id", (request, response) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+
+// Saylani Training of Node & Express.js by Sir Inzemam Malik
