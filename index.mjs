@@ -103,4 +103,4 @@ app.listen(port, () => {
 });
 
 
-// Saylani Training of Node & Express.js by Sir Inzemam Malik
+// Sir Inzemam Malik
