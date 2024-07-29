@@ -16,6 +16,7 @@ console.log("Server is running at port: 3000);
 const router = express.Router();
 let users = require("../../UsersList");
 // We can also write the above line as follows:
+import users from "../../UsersList";
 const uuid = require("uuid");
 router.get("/", (req,res) => {
 res.json(users);
