@@ -1,0 +1,174 @@
+// Saylani Training of Node & Express.js by Sir Inzemam Malik
+
+// Question: What is server in general?
+// Answer: Server is considered both Hardware & Software component. It is used to communicate with client.
+//  But mostly it is a software component.
+
+// Whenever we made any API like I did above, we have to send it to any cloud storage so that my server is accessible to all users.
+// So actually we do cloud computing. Like we sent our server to cloud service providers like Google, AWS etc.
+// Port: Handling request and response of client and server.
+
+// Tutorial:2 Get request
+
+// app.get("/", (request, response) => {
+//   // response.send("Hello World!");
+//   response.status(200).send({ message: "Welcome to the server made by Mukii --> Hello World!" });
+// });
+
+// app.get("/api/customers", (request, response) => {
+//   console.log("request query: ", request.query);
+//   const {
+//     query: { key, value },
+//   } = request;
+
+//   if (key && value) {
+//     console.log(
+//       "key = ",
+//       key,
+//       ", value = ",
+//       value,
+//       "value lowercase = ",
+//       value.toLowerCase()
+//     );
+//     let result = mockCustomers.filter(
+//       (customer) => customer[key] === value.toLowerCase() || customer[key] === value.toUpperCase()
+//     );
+//     return response.send(result);
+//   } else response.status(200).send(mockCustomers);
+// });
+
+// app.get("/api/products", (request, response) => {
+//   console.log("request query: ", request.query);
+//   const {
+//     query: { key, value },
+//   } = request;
+
+//   if (key && value) {
+//     console.log(
+//       "key = ",
+//       key,
+//       ", value = ",
+//       value,
+//       "value lowercase = ",
+//       value.toLowerCase()
+//     );
+//     let result = mockProducts.filter(
+//       (prod) => prod[key] == parseInt(value)
+//     );
+//     return response.send(result);
+//   } else response.status(200).send(mockProducts);
+// });
+
+// // Tutorial:3 Route Parameters:
+
+// app.get("/api/customers/:id", (request, response) => {
+//   console.log(
+//     "id",
+//     request.params.id,
+//     "type of id = ",
+//     typeof request.params.id
+//   );
+//   const parsedId = parseInt(request.params.id);
+//   if (isNaN(parsedId)) {
+//     return response
+//       .status(400)
+//       .send({ message: "Invalid Request! Id must be a number" });
+//   } else {
+//     const customer = mockCustomers.find((customer) => customer.id === parsedId);
+//     if (!customer) {
+//       return response.status(404).send({ message: "Customer not found" });
+//     }
+
+//     response.send(customer);
+//   }
+// });
+
+// Dave Grey Tutorial:
+// Serving Files:
+
+// Serve static files from the 'views' directory
+// app.use(express.static(path.join(__dirname, "views")));
+
+// 1st way to serve file:
+  // response.sendFile("./views/index.html", { root: __dirname });
+
+// 2nd way to serve file:
+  // response.sendFile(path.join(__dirname, "views", "index.html"));
+
+// Route to serve the newPage.html file
+// app.get("/newPage(.html)?", (req, res) => {
+//   const filePath = path.join(__dirname, "views", "newPage.html");
+//   res.sendFile(filePath, (err) => {
+//     if (err) {
+//       console.log("File not found:", filePath);
+//       res.status(404).send("File not found");
+//     }
+//   });
+// });
+
+// // Route to redirect to newPage.html
+// app.get("/oldPage(.html)?", (req, res) => {
+//   res.redirect("/newPage");
+// });
+
+// app.get("/redirect", (req, res) => {
+//   // Redirect the user to the /new-route path
+//   console.log("Redirecting to /new-route");
+//   res.redirect("/new-route");
+// });
+
+// app.get("/new-route", (req, res) => {
+//   res.send("You have been redirected to the new route!");
+// });
+
+// app.get(
+//   "/hello(.html)?",
+//   (request, response, next) => {
+//     console.log("Attempted to load hello.html");
+//     next();
+//   },
+//   (req, res) => {
+//     res.send("After Hello World From console log!");
+//   }
+// );
+
+// Chaining Route Handlers:
+// const one = (req, res, next) => {
+//   console.log("One --> 1");
+//   next();
+// };
+
+// const two = (req, res, next) => {
+//   console.log("Two --> 2");
+//   next();
+// };
+// const three = (req, res, next) => {
+//   console.log("Three --> 3");
+//   res.send("Finished the chaining routes");
+// };
+
+// app.get("/chain", [one, two, three]);
+
+
+const mockCustomers = [
+    { id: 1, name: "ali", age: 20 },
+    { id: 2, name: "mukii", age: 22 },
+    { id: 3, name: "babar", age: 24 },
+    { id: 4, name: "chanda", age: 26 },
+    { id: 5, name: "rohit", age: 28 },
+    { id: 6, name: "virat", age: 30 },
+    { id: 7, name: "rabada", age: 32 },
+  ];
+  
+  const mockProducts = [
+    { id: 1, name: "Laptop", price: 1000 },
+    { id: 2, name: "Mobile", price: 2000 },
+    { id: 3, name: "TV", price: 3000 },
+    { id: 4, name: "Washing Machine", price: 4000 },
+    { id: 5, name: "Refrigerator", price: 5000 },
+    { id: 6, name: "Microwave", price: 6000 },
+    { id: 7, name: "Oven", price: 7000 },
+    { id: 8, name: "Dishwasher", price: 8000 },
+    { id: 9, name: "Fridge", price: 9000 },
+    { id: 10, name: "Air Conditioner", price: 10000 },
+  ];
