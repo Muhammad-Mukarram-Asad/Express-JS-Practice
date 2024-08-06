@@ -25,6 +25,9 @@ app.get("/", (request, response) => {
 // Serve static files from the 'views' directory
 app.use(express.static(path.join(__dirname, "views")));
 
+// For serving normal express file which includes http methods, we have to use following Middleware:
+app.use(express.json());
+
 // Route to serve the newPage.html file
 app.get("/newPage(.html)?", (req, res) => {
   const filePath = path.join(__dirname, "views", "newPage.html");
