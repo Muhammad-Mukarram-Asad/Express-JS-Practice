@@ -6,4 +6,5 @@ The list of topics are as follows:
 1) Routing  
 2) Serving Files (Normal saved files or  other types of files)
 3) Middleware
-4) JWT (Json Web Token) used for authentication & authorizarion...
+4) JWT (Json Web Token) used for authentication & authorizarion of signed in users.
+5) It 
