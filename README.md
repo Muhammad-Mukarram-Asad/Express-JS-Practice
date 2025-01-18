@@ -1,6 +1,6 @@
 # Express-JS Tutorial Practice  
 
-The practice covers the almost all important topics of Express.js
+The practice covers almost all important topics of Express.js  
 
 The list of topics are as follows:  
 1) Routing  
